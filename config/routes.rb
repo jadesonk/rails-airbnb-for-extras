@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get "jobs", to: "jobs#index"
   get "jobs/:id", to: "jobs#show", as: :job
   get "performers", to: "users#index"
+  get "performers/:id", to:"users#show", as: :performer
 end
