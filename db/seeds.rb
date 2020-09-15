@@ -7,6 +7,19 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 Job.destroy_all
+User.destroy_all
+
+20.times do
+  attr = {
+    name: Faker::Name.name,
+    email: Faker::Internet.email,
+    password: "123123",
+    password_confirmation: "123123"
+  }
+  new_performer = User.new(attr)
+  new_performer.save
+end
+
 20.times do
   attr = {
     title: Faker::Job.title,
@@ -17,7 +30,7 @@ Job.destroy_all
     job_status: "Pro-Bono"
   }
   new_job = Job.new(attr)
-  my_user = User.find(1)
+  my_user = User.offset(rand(User.count)).first
   new_job.user = my_user
   new_job.save
 end
