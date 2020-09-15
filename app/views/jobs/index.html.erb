@@ -1,1 +1,5 @@
 <h1>This is the job listing.</h1>
+<% @jobs.each do |job| %>
+  <%= render "shared/job-card", job: job %>
+
+<% end %>
