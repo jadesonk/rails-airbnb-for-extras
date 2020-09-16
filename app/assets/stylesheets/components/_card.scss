@@ -1,0 +1,11 @@
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	padding-top: 56px;
+	width: fit-content;
+}
+
+.no-gutters {
+	margin: 24px, 24px;
+}
