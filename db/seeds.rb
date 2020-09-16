@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+Job.destroy_all
+20.times do
+  attr = {
+    title: Faker::Job.title,
+    description: Faker::GreekPhilosophers.quote,
+    application_deadline_date: Faker::Date.in_date_period,
+    location: Faker::Address.full_address,
+    shoot_date: Faker::Date.in_date_period,
+    job_status: "Pro-Bono"
+  }
+  new_job = Job.new(attr)
+  my_user = User.find(1)
+  new_job.user = my_user
+  new_job.save
+end
