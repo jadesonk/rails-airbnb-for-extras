@@ -33,7 +33,7 @@ end
 puts "Create Jobs"
 20.times do
   attr = {
-    title: Faker::Job.title,
+    title: 'Casting for - ' + Faker::Movie.title,
     description: Faker::GreekPhilosophers.quote,
     application_deadline_date: Faker::Date.in_date_period,
     location: Faker::Address.full_address,
