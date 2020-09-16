@@ -23,7 +23,8 @@ puts "Create Performers"
     gender: Faker::Demographic.sex,
     physical_attributes: Faker::Demographic.height(unit: :imperial),
     ethnicity: Faker::Demographic.race,
-    age: Random.rand(18...42)
+    age: Random.rand(18...42),
+    image: "https://kitt.lewagon.com/placeholder/users/random"
   }
   new_performer = User.new(attr)
   new_performer.save
