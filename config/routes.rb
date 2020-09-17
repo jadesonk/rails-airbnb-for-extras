@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   patch "performers/:id", to:"users#update"
 
 
-  patch "auditions/:id", to:"auditions#approve", as: :approve_audition
+  patch "auditions/:id/approve", to:"auditions#approve", as: :approve_audition
+  patch "auditions/:id/reject", to:"auditions#reject", as: :reject_audition
 end

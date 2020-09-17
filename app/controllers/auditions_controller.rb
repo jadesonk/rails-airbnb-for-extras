@@ -28,6 +28,13 @@ class AuditionsController < ApplicationController
     redirect_to root_path
   end
 
+  def reject
+    @audition = Audition.find(params[:id])
+    @audition.status = "reject"
+    @audition.save
+    redirect_to root_path
+  end
+
 
 
 	private

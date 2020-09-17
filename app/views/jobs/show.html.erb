@@ -66,6 +66,7 @@
                     <%= link_to "user_profile", performer_path(audition.user) %>
                     <%= audition.status %>
                     <%= link_to "approve", approve_audition_path(audition), method: :patch %>
+                    <%= link_to "reject", reject_audition_path(audition), method: :patch %>
                   </div>
                 <% end %>
               <% end %>
