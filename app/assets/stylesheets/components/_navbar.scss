@@ -35,3 +35,9 @@
 .navbar-light .navbar-nav .nav-link {
   color: $color-tan;
 }
+
+.navbar-nav.profile .nav-item:first-child {
+  border-right: 1px solid $white;
+  margin-right: 8px;
+  padding-right: 16px;
+}

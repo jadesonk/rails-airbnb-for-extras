@@ -1,6 +1,8 @@
 .btn-info.btn-icon {
   display: inline-flex;
   align-items: center;
+  justify-content: space-between;
+  min-width: 180px;
   & i {
     margin-left: 12px;
   }

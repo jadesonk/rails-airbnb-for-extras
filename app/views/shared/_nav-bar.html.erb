@@ -16,14 +16,20 @@
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </li> -->
     </ul>
-    <ul class="navbar-nav">
+    <ul class="navbar-nav profile">
       <% if user_signed_in? %>
-        <li class="nav-item align-self-center text-light font-weight-bold">
-          Welcome <%= current_user.name ? current_user.name : current_user.email %>
+        <li class="nav-item align-self-center text-light">
+          Welcome
+          <strong>
+            <% if current_user.name %>
+              <%= link_to current_user.name, performer_path(current_user) %>
+            <% else %>
+              <%= link_to current_user.email, performer_path(current_user) %>
+            <% end %>
+          </strong>
         </li>
-
         <li class="nav-item">
-          <%= link_to '|  Logout',
+          <%= link_to 'Logout',
               destroy_user_session_path,
               class: 'nav-link',
               method: :delete,
