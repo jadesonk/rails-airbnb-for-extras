@@ -10,3 +10,28 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar.bg-main {
+  background-color: $color-green;
+}
+
+.navbar .nav-button {
+  background-color: $color-red;
+  color: $white;
+  padding: 8px 24px;
+  margin-left: 8px;
+  display: block;
+  border-radius: 2px;
+  &:hover {
+    background-color: $color-red-hover;
+    text-decoration: none;
+  }
+  &:active {
+    background-color: $color-red-active;
+    border-color: $color-red-border-active;
+  }
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: $color-tan;
+}

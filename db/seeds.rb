@@ -51,7 +51,7 @@ doc = Nokogiri::HTML.parse(browser.html)
 doc.search('.casting__listing--prod').each do |element|
   attr = {
     title: element.search('.prod__title a').text.strip,
-    description: element.search('.prod__desc').text.strip,
+    description: element.search('.prod__desc').text.strip[12..-1],
     application_deadline_date: Faker::Date.in_date_period,
     location: Faker::Address.full_address,
     shoot_date: Faker::Date.in_date_period,
@@ -60,6 +60,11 @@ doc.search('.casting__listing--prod').each do |element|
   new_job = Job.new(attr)
   my_user = User.offset(rand(User.count)).first
   new_job.user = my_user
+
+  # create roles for job
+
+
+
   new_job.save
 end
 

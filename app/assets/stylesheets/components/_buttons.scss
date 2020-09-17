@@ -1,0 +1,7 @@
+.btn-info.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  & i {
+    margin-left: 12px;
+  }
+}
