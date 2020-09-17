@@ -19,4 +19,7 @@ Rails.application.routes.draw do
   get "performers/:id", to:"users#show", as: :performer
   get "performers/:id/edit", to:"users#edit", as: :edit_performer
   patch "performers/:id", to:"users#update"
+
+
+  patch "auditions/:id", to:"auditions#approve", as: :approve_audition
 end

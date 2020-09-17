@@ -62,7 +62,10 @@
                 <h3><%= role.title %></h3>
                 <% role.auditions.each do |audition| %>
                   <div> <!-- information we put for user application -->
-                    <%= audition.user.name %>
+                    <%= audition.user.email %>
+                    <%= link_to "user_profile", performer_path(audition.user) %>
+                    <%= audition.status %>
+                    <%= link_to "approve", approve_audition_path(audition), method: :patch %>
                   </div>
                 <% end %>
               <% end %>

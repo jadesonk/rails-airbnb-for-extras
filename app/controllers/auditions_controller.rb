@@ -12,6 +12,7 @@ class AuditionsController < ApplicationController
 		@audition.role = @role
 		@user = current_user
 		@audition.user = @user
+    @audition.status = "pending"
 
 		if @audition.save
 			redirect_to root_path
@@ -19,6 +20,14 @@ class AuditionsController < ApplicationController
 			render :new
 		end
 	end
+
+  def approve
+    @audition = Audition.find(params[:id])
+    @audition.status = "approve"
+    @audition.save
+    redirect_to root_path
+  end
+
 
 
 	private
