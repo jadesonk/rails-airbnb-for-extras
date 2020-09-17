@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
+require 'nokogiri'
+require 'open-uri'
+require 'watir'
 
 puts "Destroy Jobs"
 Job.destroy_all if Rails.env.development?
@@ -14,7 +17,15 @@ puts "Destroy Performers"
 User.destroy_all if Rails.env.development?
 
 puts "Create Performers"
-20.times do
+
+img_url = 'https://api.generated.photos/api/v1/faces?api_key=_jzNSfLWW-2wUUlqP7rHGQ'
+imgs = JSON.parse(open(img_url).read)
+img_array = []
+imgs["faces"].each do |item|
+  img_array << item["urls"].last["512"]
+end
+
+10.times do
   attr = {
     name: Faker::Name.name,
     email: Faker::Internet.email,
@@ -24,17 +35,23 @@ puts "Create Performers"
     physical_attributes: Faker::Demographic.height(unit: :imperial),
     ethnicity: Faker::Demographic.race,
     age: Random.rand(18...42),
-    image: "https://kitt.lewagon.com/placeholder/users/random"
+    image: img_array.sample
   }
   new_performer = User.new(attr)
   new_performer.save
 end
 
 puts "Create Jobs"
-20.times do
+
+url = 'https://www.backstage.com/casting/'
+browser = Watir::Browser.new :chrome, headless: true
+browser.goto url
+doc = Nokogiri::HTML.parse(browser.html)
+
+doc.search('.casting__listing--prod').each do |element|
   attr = {
-    title: 'Casting for - ' + Faker::Movie.title,
-    description: Faker::GreekPhilosophers.quote,
+    title: element.search('.prod__title a').text.strip,
+    description: element.search('.prod__desc').text.strip,
     application_deadline_date: Faker::Date.in_date_period,
     location: Faker::Address.full_address,
     shoot_date: Faker::Date.in_date_period,
