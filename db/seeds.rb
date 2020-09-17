@@ -9,6 +9,7 @@ require 'faker'
 require 'nokogiri'
 require 'open-uri'
 require 'watir'
+require_relative 'seed-data'
 
 puts "Destroy Jobs"
 Job.destroy_all if Rails.env.development?
@@ -62,9 +63,15 @@ doc.search('.casting__listing--prod').each do |element|
   new_job.user = my_user
 
   # create roles for job
-
-
-
+  (1..4).to_a.sample.times do
+    role_attr = {
+      title: SeedData.roles.sample[:title],
+      description: SeedData.roles.sample[:description]
+    }
+    new_role = Role.new(role_attr)
+    new_role.job = new_job
+    new_role.save
+  end
   new_job.save
 end
 
