@@ -16,9 +16,9 @@
         <li class="nav-item">
           <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Roles</a>
         </li>
-<!--         <li class="nav-item">
-          <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Apply</a>
-        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" id="auditions-tab" data-toggle="tab" href="#auditions" role="tab" aria-controls="auditions" aria-selected="false">Auditions</a>
+        </li>
       </ul>
 
       <div class="tab-content">
@@ -46,17 +46,27 @@
                   <%= link_to "Apply", new_role_audition_path(role), class: "btn btn-primary ml-auto" %>
                 </h5>
               </div>
-
-              <div id=<%="collapse"+role.id.to_s%> class="collapse show" aria-labelledby=<%="heading"+role.id.to_s%> data-parent="#accordionExample">
+                <div id=<%="collapse"+role.id.to_s%> class="collapse show" aria-labelledby=<%="heading"+role.id.to_s%> data-parent="#accordionExample">
                 <div class="card-body">
                   <%= role.description %>
                 </div>
               </div>
+              
             </div>
             <% end %>
           </div>
         </div>
-        <!-- <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">...5123</div> -->
+        </div>
+        <div class="tab-pane" id="auditions" role="tabpanel" aria-labelledby="auditions-tab">
+          <div>
+          <% @job.roles.each do |role| %>
+            <%= role.title %>
+            <% role.auditions.each do |audition| %>
+            <%= audition.user.name %>
+            <% end %>
+          <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
