@@ -1,0 +1,13 @@
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+		<h2><%= @role.title %></h2>
+			<p><%= @role.description %></p>
+		</div>
+	</div>
+</div>
+
+			<%= simple_form_for([@role, @audition]) do |f| %>
+        <%= f.input :application_details %>
+        <%= f.submit class: 'btn btn-primary btn-block' %>
+      <% end %>

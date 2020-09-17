@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     resources :roles, only: [:new,:create]
   end
 
+  resources :roles do
+    resources :auditions, only: [:new, :create]
+  end
 
   get "performers", to: "users#index"
   get "performers/:id", to:"users#show", as: :performer
