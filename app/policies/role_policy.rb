@@ -4,7 +4,13 @@ class RolePolicy < ApplicationPolicy
       scope.all
     end
   end
+
   def create?
-    return false
+    raise
+  end
+
+  def new?
+    record.job.user == user
   end
 end
+

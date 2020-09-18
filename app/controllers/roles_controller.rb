@@ -2,13 +2,15 @@ class RolesController < ApplicationController
   def new
     @role = Role.new
     @job = Job.find(params[:job_id])
+    @role.job = @job
+    authorize @job
   end
 
   def create
     @role = Role.new(role_params)
     @job = Job.find(params[:job_id])
     @role.job = @job
-    authorize @role
+    authorize @job
     if @role.save
       redirect_to @job
     else
