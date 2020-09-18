@@ -54,7 +54,7 @@ doc.search('.casting__listing--prod').each do |element|
     # title: element.search('.prod__title a').text.strip,
     title: Faker::Marketing.buzzwords,
     # description: element.search('.prod__desc').text.strip[12..-1],
-    description: Faker::Lorem.paragraph_by_chars(number: 140, supplemental: false)
+    description: Faker::Lorem.paragraph_by_chars(number: 140, supplemental: false),
     application_deadline_date: Faker::Date.in_date_period,
     location: Faker::Address.full_address,
     shoot_date: Faker::Date.in_date_period,
