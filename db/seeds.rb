@@ -8,7 +8,7 @@
 require 'faker'
 require 'nokogiri'
 require 'open-uri'
-require 'watir'
+# require 'watir'
 require_relative 'seed-data'
 
 puts "Destroy Jobs"
@@ -44,15 +44,17 @@ end
 
 puts "Create jobs with roles and auditions"
 
-url = 'https://www.backstage.com/casting/'
-browser = Watir::Browser.new :chrome, headless: true
-browser.goto url
-doc = Nokogiri::HTML.parse(browser.html)
+# url = 'https://www.backstage.com/casting/'
+# browser = Watir::Browser.new :chrome, headless: true
+# browser.goto url
+# doc = Nokogiri::HTML.parse(browser.html)
 
 doc.search('.casting__listing--prod').each do |element|
   attr = {
-    title: element.search('.prod__title a').text.strip,
-    description: element.search('.prod__desc').text.strip[12..-1],
+    # title: element.search('.prod__title a').text.strip,
+    title: Faker::Marketing.buzzwords,
+    # description: element.search('.prod__desc').text.strip[12..-1],
+    description: Faker::Lorem.paragraph_by_chars(number: 140, supplemental: false)
     application_deadline_date: Faker::Date.in_date_period,
     location: Faker::Address.full_address,
     shoot_date: Faker::Date.in_date_period,
