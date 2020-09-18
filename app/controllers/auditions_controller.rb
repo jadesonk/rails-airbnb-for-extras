@@ -29,16 +29,15 @@ class AuditionsController < ApplicationController
     @audition.status = "Approved"
     authorize @audition
     @audition.save
-    redirect_to root_path
+    redirect_to job_path(@audition.job)
   end
 
   def reject
     @audition = Audition.find(params[:id])
     @audition.status = "Rejected"
-
     authorize @audition
     @audition.save
-    redirect_to root_path
+    redirect_to job_path(@audition.job)
   end
 
 

@@ -18,38 +18,42 @@
 					<strong>Email:</strong> <%= @performer.email %></p>
 			</div>
 			<div class="row">
-					<%= link_to 'Edit Profile', edit_performer_path, class: 'btn btn-primary' %><br>
+        <% if policy(@performer).update? %>
+          <%= link_to 'Edit Profile', edit_performer_path, class: 'btn btn-primary' %><br>
+        <% end %>
 			</div>
-		<div>
+		</div>
 	</div>
 </div>
 
-	<div class="d-flex col ml-3 mt-5 mb-5 border">
-		<div class="row flex-column col pt-3 pl-3">
-				<h2>Audition Status</h2>
-			<% @auditions.each do |audition| %>
-				<div class="accordion pb-3" id="accordionExample">
-					<div class="card">
-						<div class="card-header" id="headingOne">
-							<h2 class="mb-0 d-flex">
-								<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-									<div class="d-flex mt-auto bd-highlight justify-content-between">
-										<div class="d-flex justify-content-start"><%= audition.role.title %></div>
-									<div class="d-flex mt-auto bd-highlight justify-content-between">
-										<div class="d-flex justify-content-end background-color-yellow">Status: <%= audition.status %></div>
-									</div>
-								</button>
-							</h2>
-						</div>
+<% if policy(@performer).update? %>
+  <div class="d-flex col ml-3 mt-5 mb-5 border">
+  	<div class="row flex-column col pt-3 pl-3">
+			<h2>Audition Status</h2>
+      <% @auditions.each do |audition| %>
+        <div class="accordion pb-3" id="accordion<%= audition.id.to_s %>">
+          <div class="card">
+            <div class="card-header" id="heading<%= audition.id.to_s %>">
+              <h2 class="mb-0 d-flex">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse<%= audition.id.to_s %>" aria-expanded="true" aria-controls="collapse<%= audition.id.to_s %>">
+                  <div class="d-flex mt-auto bd-highlight justify-content-between">
+                    <div class="d-flex justify-content-start"><%= audition.role.title %></div>
+                  <div class="d-flex mt-auto bd-highlight justify-content-between">
+                    <div class="d-flex justify-content-end background-color-yellow">Status: <%= audition.status ? audition.status : "Pending" %></div>
+                  </div>
+                </button>
+              </h2>
+            </div>
 
-						<div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
-							<div class="card-body">
-								<strong><%= audition.job.title %></strong><br>
-								<%= audition.job.description %>
-							</div>
-						</div>
-					</div>
-				</div>
-			<% end %>
-		</div>
-	</div>
+            <div id="collapse<%= audition.id.to_s %>" class="collapse hide" aria-labelledby="heading<%= audition.id.to_s %>" data-parent="#accordion<%= audition.id.to_s %>">
+              <div class="card-body">
+                <strong><%= audition.job.title %></strong><br>
+                <%= audition.job.description %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+  	</div>
+  </div>
+<% end %>
