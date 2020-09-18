@@ -49,7 +49,8 @@ puts "Create jobs with roles and auditions"
 # browser.goto url
 # doc = Nokogiri::HTML.parse(browser.html)
 
-doc.search('.casting__listing--prod').each do |element|
+# doc.search('.casting__listing--prod').each do |element|
+20.times do
   attr = {
     # title: element.search('.prod__title a').text.strip,
     title: Faker::Marketing.buzzwords,
