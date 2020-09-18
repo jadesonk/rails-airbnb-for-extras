@@ -8,7 +8,7 @@ class RolesController < ApplicationController
     @role = Role.new(role_params)
     @job = Job.find(params[:job_id])
     @role.job = @job
-
+    authorize @role
     if @role.save
       redirect_to @job
     else
