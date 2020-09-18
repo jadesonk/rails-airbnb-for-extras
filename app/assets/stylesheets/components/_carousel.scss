@@ -1,0 +1,39 @@
+#job-carousel {
+  .btn-floating.left {
+    position: absolute;
+    left: -24px;
+    top: calc(50% - 16px);
+    & i {
+      font-size: 32px;
+    }
+  }
+
+  .btn-floating.right {
+    position: absolute;
+    right: -24px;
+    top: calc(50% - 16px);
+    & i {
+      font-size: 32px;
+    }
+  }
+}
+
+#performer-carousel {
+  .btn-floating.left {
+    position: absolute;
+    left: -24px;
+    top: calc(50% - 16px);
+    & i {
+      font-size: 32px;
+    }
+  }
+
+  .btn-floating.right {
+    position: absolute;
+    right: -24px;
+    top: calc(50% - 16px);
+    & i {
+      font-size: 32px;
+    }
+  }
+}

@@ -1,2 +1,37 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner d-flex">
+  <div class="banner-content p-5">
+    <h1>Extra Extra...read all about it!</h1>
+    <h4>
+      <strong>Ever need talent quick</strong> to fill a role or shoot a quick video?
+      Want to model, or act in goofy videos?<br>
+    </h4>
+    <h2>Well, why not both?!</h2>
+    <h4>
+      <em>
+        With <strong class="text-primary">ExtraHelp</strong>! You can be your own casting director and create your dream video, or star in someone elses documentary about social media addiction all in one place!
+        <strong>#Be both!</strong>
+      </em>
+    </h4>
+  </div>
+  <%= image_tag "logo", alt: "logo" %>
+</div>
+
+<div class="bg-home">
+  <div class="container pt-5 pb-5">
+    <div class="row pt-2 pb-2">
+      <div class="col-12">
+        <h3 class="text-center mb-5">Find the right talent for your shoot!</h3>
+        <%= render 'performer-carousel' %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container pt-5 pb-5">
+  <div class="row pt-2 pb-2">
+    <div class="col-12">
+      <h3 class="text-center mb-5">See our latest casting calls!</h3>
+      <%= render 'job-carousel' %>
+    </div>
+  </div>
+</div>
+

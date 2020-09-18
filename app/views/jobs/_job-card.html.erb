@@ -1,24 +1,24 @@
-<div class="card">
+<div class="card shadow-sm">
   <div class="container">
     <div class="row">
       <div class="col-8">
           <div class="card-body">
             <h2 class="card-title"><%= job.title %></h2>
-            <h6 class="card-subtitle">Description:</h6>
+            <h5 class="card-subtitle">Description:</h5>
             <p class="card-text"><%= job.description %></p>
 
-            <h6 class="card-subtitle">Shooting location:</h6>
+            <h5 class="card-subtitle">Shooting location:</h5>
             <p class="card-text"><%= job.location %></p>
         </div>
       </div>
       <div class="col-4 bg-secondary">
         <div class="card-body h-100 d-flex flex-column justify-content-between">
           <div>
-            <h6 class="card-subtitle text-white-50">Application Deadline:</h6>
+            <h5 class="card-subtitle text-white-50">Application Deadline:</h5>
             <p class="text-light"><%= job.application_deadline_date %></p >
           </div>
           <div>
-            <h6 class="card-subtitle text-white-50">Shoot Date:</h6>
+            <h5 class="card-subtitle text-white-50">Shoot Date:</h5>
             <p class="text-light"><%= job.shoot_date %></p>
           </div>
           <%= link_to "View Details", job_path(job), class: "btn btn-primary btn-block" %>

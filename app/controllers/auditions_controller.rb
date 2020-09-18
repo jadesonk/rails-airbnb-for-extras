@@ -4,6 +4,7 @@ class AuditionsController < ApplicationController
 	def new
 		@audition = Audition.new
 		@role = Role.find(params[:role_id])
+    authorize @audition
 	end
 
 	def create
@@ -14,6 +15,8 @@ class AuditionsController < ApplicationController
 		@audition.user = @user
     @audition.status = "pending"
 
+    authorize @audition
+
 		if @audition.save
 			redirect_to root_path
 		else
@@ -23,14 +26,17 @@ class AuditionsController < ApplicationController
 
   def approve
     @audition = Audition.find(params[:id])
-    @audition.status = "approve"
+    @audition.status = "Approved"
+    authorize @audition
     @audition.save
     redirect_to root_path
   end
 
   def reject
     @audition = Audition.find(params[:id])
-    @audition.status = "reject"
+    @audition.status = "Rejected"
+
+    authorize @audition
     @audition.save
     redirect_to root_path
   end
