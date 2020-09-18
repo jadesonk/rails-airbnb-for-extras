@@ -9,6 +9,7 @@ require 'faker'
 require 'nokogiri'
 require 'open-uri'
 require 'watir'
+require_relative 'seed-data'
 
 puts "Destroy Jobs"
 Job.destroy_all if Rails.env.development?
@@ -41,7 +42,7 @@ end
   new_performer.save
 end
 
-puts "Create Jobs"
+puts "Create Jobs with Roles"
 
 url = 'https://www.backstage.com/casting/'
 browser = Watir::Browser.new :chrome, headless: true
@@ -51,7 +52,7 @@ doc = Nokogiri::HTML.parse(browser.html)
 doc.search('.casting__listing--prod').each do |element|
   attr = {
     title: element.search('.prod__title a').text.strip,
-    description: element.search('.prod__desc').text.strip,
+    description: element.search('.prod__desc').text.strip[12..-1],
     application_deadline_date: Faker::Date.in_date_period,
     location: Faker::Address.full_address,
     shoot_date: Faker::Date.in_date_period,
@@ -60,6 +61,17 @@ doc.search('.casting__listing--prod').each do |element|
   new_job = Job.new(attr)
   my_user = User.offset(rand(User.count)).first
   new_job.user = my_user
+
+  # create roles for job
+  (2..4).to_a.sample.times do
+    role_attr = {
+      title: SeedData.roles.sample[:title],
+      description: SeedData.roles.sample[:description]
+    }
+    new_role = Role.new(role_attr)
+    new_role.job = new_job
+    new_role.save
+  end
   new_job.save
 end
 

@@ -3,7 +3,12 @@
       <div class="col-12">
         <div class="d-flex justify-content-between align-items-center mb-3">
           <h1>See our latest casting calls!</h1>
-          <%= link_to 'Create new listing', jobs_new_path, class: 'btn btn-primary' if current_user %>
+          <% if current_user %>
+            <%= link_to jobs_new_path, class: 'btn btn-info btn-icon' do %>
+              Create job posting
+              <i class="fas fa-plus"></i>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
