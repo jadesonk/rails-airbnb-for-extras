@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 	
 	def show
 		@performer = User.find(params[:id])
+		@auditions = Audition.where(user_id: @performer.id)
 	end
 	
 	def edit

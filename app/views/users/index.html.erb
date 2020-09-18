@@ -1,8 +1,10 @@
-<div class="container">
-  <h2>Find the right performers for your next product shoot</h1>
-  <div class="user-grid">
-    <% @performers.each do |performer| %>
-      <%= render 'user-card', performer: performer %>
-    <% end %>
+<div class="container mt-5">
+  <div class="row">
+    <h2>Find the right performers for your next product shoot</h1>
+    <div class="user-grid" style="width: 100%"  >
+      <% @performers.each do |performer| %>
+        <%= render 'user-card', performer: performer %>
+      <% end %>
+    </div>
   </div>
 </div>
