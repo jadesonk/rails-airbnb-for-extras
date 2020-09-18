@@ -8,4 +8,6 @@ class User < ApplicationRecord
 	has_many :created_jobs, class_name: "Job", dependent: :destroy
 	has_many :applied_jobs, through: :auditions, source: :job
 	validates :email, presence: true, uniqueness: true
+
+  attr_reader :user
 end
