@@ -42,7 +42,7 @@ end
   new_performer.save
 end
 
-puts "Create Jobs"
+puts "Create Jobs with Roles"
 
 url = 'https://www.backstage.com/casting/'
 browser = Watir::Browser.new :chrome, headless: true
@@ -63,7 +63,7 @@ doc.search('.casting__listing--prod').each do |element|
   new_job.user = my_user
 
   # create roles for job
-  (1..4).to_a.sample.times do
+  (2..4).to_a.sample.times do
     role_attr = {
       title: SeedData.roles.sample[:title],
       description: SeedData.roles.sample[:description]

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-main">
-  <a class="navbar-brand" href="/">Airbnb for Extras</a>
+  <a class="navbar-brand" href="/"><i class="fas fa-people-carry"></i> ExtraHelp</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -12,9 +12,6 @@
       <li class="nav-item">
         <%= link_to 'Performers', performers_path, class: 'nav-link' %>
       </li>
-<!--       <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li> -->
     </ul>
     <ul class="navbar-nav profile">
       <% if user_signed_in? %>
@@ -32,8 +29,7 @@
           <%= link_to 'Logout',
               destroy_user_session_path,
               class: 'nav-link',
-              method: :delete,
-              data: { confirm: "Are you sure you want to logout?" } %>
+              method: :delete %>
         </li>
       <% else %>
         <li class="nav-item">

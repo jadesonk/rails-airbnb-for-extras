@@ -2,29 +2,36 @@
   <div class="banner-content p-5">
     <h1>Extra Extra...read all about it!</h1>
     <h4>
-      <strong>Ever need talent quick</strong> to fill a role or test a shoot?
-      Looking to model, or act in goofy videos?<br>
+      <strong>Ever need talent quick</strong> to fill a role or shoot a quick video?
+      Want to model, or act in goofy videos?<br>
     </h4>
-    <h2>Why not both?!</h2>
+    <h2>Well, why not both?!</h2>
     <h4>
       <em>
-        Meet @EXTRA, a place where you can be the casting director, create your dream video,
-        and star in someone elses documentary about social media addiction! <strong>#Be both!</strong>
+        With <strong class="text-primary">ExtraHelp</strong>! You can be your own casting director, create your dream video, and star in someone elses documentary about social media addiction all in one place!
+        <strong>#Be both!</strong>
       </em>
     </h4>
   </div>
   <%= image_tag "logo", alt: "logo" %>
 </div>
 
-<div class="container pt-5 pb-5">
-  <div class="row">
-    <div class="col-12">
-
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-
+<div class="bg-home">
+  <div class="container pt-5 pb-5">
+    <div class="row pt-2 pb-2">
+      <div class="col-12">
+        <h3 class="text-center mb-5">Find the right talent for your shoot!</h3>
+        <%= render 'performer-carousel' %>
+      </div>
     </div>
   </div>
 </div>
+<div class="container pt-5 pb-5">
+  <div class="row pt-2 pb-2">
+    <div class="col-12">
+      <h3 class="text-center mb-5">See our latest casting calls!</h3>
+      <%= render 'job-carousel' %>
+    </div>
+  </div>
+</div>
+

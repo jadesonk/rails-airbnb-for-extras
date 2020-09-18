@@ -1,0 +1,21 @@
+<!--Carousel Wrapper-->
+<div id="job-carousel" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+  <a class="btn-floating left" href="#job-carousel" data-slide="prev">
+    <i class="fas fa-chevron-left"></i>
+  </a>
+  <a class="btn-floating right" href="#job-carousel" data-slide="next">
+    <i class="fas fa-chevron-right"></i>
+  </a>
+
+  <div class="carousel-inner" role="listbox">
+    <% @jobs.each do |job| %>
+      <div class="carousel-item <%= 'active' if job == @jobs.first %>">
+        <div class="col-md-12" style="float:left">
+          <%= render "jobs/job-card", job: job %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+

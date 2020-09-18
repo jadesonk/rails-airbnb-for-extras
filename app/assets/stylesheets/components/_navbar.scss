@@ -1,18 +1,22 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.navbar {
+  padding: 0.5rem 2rem;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar .navbar-brand {
+  color: $color-red;
+  font-size: 32px;
 }
 
 .navbar.bg-main {
   background-color: $color-green;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: $white;
+  &:hover {
+    background-color: $color-red;
+    color: $color-green;
+  }
 }
 
 .navbar .nav-button {
@@ -37,7 +41,7 @@
 }
 
 .navbar-nav.profile .nav-item:first-child {
-  border-right: 1px solid $white;
+  border-right: 1px solid  rgba(245, 245, 245, 0.5);
   margin-right: 8px;
   padding-right: 16px;
 }
