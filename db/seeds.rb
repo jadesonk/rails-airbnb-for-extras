@@ -14,33 +14,33 @@ require_relative 'seed-data'
 puts "Destroy Jobs"
 Job.destroy_all if Rails.env.development?
 
-# puts "Destroy Performers"
-# User.destroy_all if Rails.env.development?
+puts "Destroy Performers"
+User.destroy_all if Rails.env.development?
 
-# puts "Create Performers"
+puts "Create Performers"
 
-# img_url = 'https://api.generated.photos/api/v1/faces?api_key=_jzNSfLWW-2wUUlqP7rHGQ'
-# imgs = JSON.parse(open(img_url).read)
-# img_array = []
-# imgs["faces"].each do |item|
-#   img_array << item["urls"].last["512"]
-# end
+img_url = 'https://api.generated.photos/api/v1/faces?api_key=_jzNSfLWW-2wUUlqP7rHGQ'
+imgs = JSON.parse(open(img_url).read)
+img_array = []
+imgs["faces"].each do |item|
+  img_array << item["urls"].last["512"]
+end
 
-# 10.times do
-#   attr = {
-#     name: Faker::Name.name,
-#     email: Faker::Internet.email,
-#     password: "123123",
-#     password_confirmation: "123123",
-#     gender: Faker::Demographic.sex,
-#     physical_attributes: Faker::Demographic.height(unit: :imperial),
-#     ethnicity: Faker::Demographic.race,
-#     age: Random.rand(18...42),
-#     image: img_array.sample
-#   }
-#   new_performer = User.new(attr)
-#   new_performer.save
-# end
+10.times do
+  attr = {
+    name: Faker::Name.name,
+    email: Faker::Internet.email,
+    password: "123123",
+    password_confirmation: "123123",
+    gender: Faker::Demographic.sex,
+    physical_attributes: Faker::Demographic.height(unit: :imperial),
+    ethnicity: Faker::Demographic.race,
+    age: Random.rand(18...42),
+    image: img_array.sample
+  }
+  new_performer = User.new(attr)
+  new_performer.save
+end
 
 puts "Create jobs with roles and auditions"
 
