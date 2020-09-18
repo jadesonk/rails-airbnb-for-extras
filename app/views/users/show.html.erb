@@ -1,23 +1,55 @@
-<div class="container">
-	<div class="card mb-3">
-		<img src='<%=@performer.image%>' class="card-img-top" alt="...">
-		<div class="card-body">
-			<h5 class="card-title text-center">
-			<strong><%= @performer.name %></strong>
-			</h5>
-			<p class="card-text border">
-			<p>Gender: <%= @performer.gender %></p>
-			<p>Ethnicity: <%= @performer.ethnicity %></p>
-			<p>Age: <%= @performer.age %></p>
-			<p>Location: <%= @performer.location %></p>
-			<p>Physcial Attributes: <%= @performer.physical_attributes %></p>
-			<p>Biography: <%= @performer.bio %></p>
-			</p>
-			<p class="card-text"><small class="text-muted">Last updated <%= @performer.updated_at %></small></p>
+<div class="container mt-5">
+	<div class="row pt-3">
+		<div class="col-6">
+			<h1 class="text-align-left"><strong><%= @performer.name %></strong></h1>
+				<div class="d-flex bd-highlight">
+					<img src=<%= @performer.image %> class="img-thumbnail" alt="..." max-width="100%">
+				</div>
 		</div>
-    <!-- add conditional to only display if user profile is correct -->
-		<button type="button" class="btn btn-primary"><%= link_to "Edit Profile", edit_performer_path %></button>
+		<div class="col-6">
+			<div class="row flex-column pl-3r">
+				<h1>Biography</h1>
+					<p><%= @performer.bio %></p>
+					<p><strong>Name:</strong> <%= @performer.name %><br>
+					<strong>Gender:</strong> <%= @performer.gender %><br>
+					<strong>Age:</strong> <%= @performer.age %><br>
+					<strong>Ethnicity:</strong> <%= @performer.ethnicity %><br>
+					<strong>Physical Attributes:</strong> <%= @performer.physical_attributes %><br>
+					<strong>Email:</strong> <%= @performer.email %></p>
+			</div>
+			<div class="row">
+					<%= link_to 'Edit Profile', edit_performer_path, class: 'btn btn-primary' %><br>
+			</div>
+		<div>
 	</div>
 </div>
 
+	<div class="d-flex col ml-3 mt-5 mb-5 border">
+		<div class="row flex-column col pt-3 pl-3">
+				<h2>Audition Status</h2>
+			<% @auditions.each do |audition| %>
+				<div class="accordion pb-3" id="accordionExample">
+					<div class="card">
+						<div class="card-header" id="headingOne">
+							<h2 class="mb-0 d-flex">
+								<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+									<div class="d-flex mt-auto bd-highlight justify-content-between">
+										<div class="d-flex justify-content-start"><%= audition.role.title %></div>
+									<div class="d-flex mt-auto bd-highlight justify-content-between">
+										<div class="d-flex justify-content-end background-color-yellow">Status: <%= audition.status %></div>
+									</div>
+								</button>
+							</h2>
+						</div>
 
+						<div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
+							<div class="card-body">
+								<strong><%= audition.job.title %></strong><br>
+								<%= audition.job.description %>
+							</div>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>

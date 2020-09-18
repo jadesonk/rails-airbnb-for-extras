@@ -1,7 +1,22 @@
 class UsersController < ApplicationController
-  def index
-    @performers = User.all
-  end
+	def index
+		@performers = User.all
+	end
+	
+	def show
+		@performer = User.find(params[:id])
+		@auditions = Audition.where(user_id: @performer.id)
+	end
+	
+	def edit
+		@performer = User.find(params[:id])
+	end
+	
+	def update
+		@performer = User.find(params[:id])
+		@performer.update(performer_params)
+		redirect_to performer_path
+	end
 
   def show
     @performer = User.find(params[:id])
